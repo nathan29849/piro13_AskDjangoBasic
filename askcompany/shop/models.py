@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -11,4 +12,9 @@ class Item(models.Model):
     is_publish = models.BooleanField(default=False)
 
     def __str__(self):
+        # return '<{}> {}'.format(self.pk, self.name)
         return self.name
+
+
+class Post(models.Model):
+    post = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
