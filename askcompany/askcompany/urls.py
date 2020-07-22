@@ -20,5 +20,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
     path('shop/', include('shop.urls'))  # 나머지는 shop.urls에서 이어서 진행한다는 의미
 ]
