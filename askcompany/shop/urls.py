@@ -7,4 +7,5 @@ register_converter(FourDigitYearConverter, 'yyyy')
 app_name = 'shop'
 urlpatterns = [
     path('archives/<yyyy:year>/', views.archives_year),
+    path('panda/', views.response_csv)
 ]
