@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0pt90puqt!*@(eb8^a1!pyp23t3@tpy+x3pcqt2qpwls*q5)ng'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  # True로 계속 실행하면 메모리로 query를 계속 누적하게 됨. 쓸 때만 True로 바꾸자.
+DEBUG = True  # True로 계속 실행하면 메모리로 query를 계속 누적하게 됨. 쓸 때만 True로 바꾸자.
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []   # '*'
 
 
 # Application definition
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',  # 장고 기본 앱
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.humanize',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -127,6 +128,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, "askcompany", "static"),
+]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 INTERNAL_IPS = ['127.0.0.1']  # 장고 디버그 툴바를 띄우는 걸 허용할 IP들
 
