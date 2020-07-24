@@ -15,6 +15,9 @@ class Item(models.Model):
         # return '<{}> {}'.format(self.pk, self.name)
         return self.name
 
+    class Meta:
+        ordering = ['-id'] # - 들어가면 내림차순(DESC), 없으면 오름차순(ASC)
 
-class Post(models.Model):
-    post = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+# class Post(models.Model):
+#     post = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

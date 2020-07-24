@@ -18,7 +18,7 @@ def item_list(request):
 
     q = request.GET.get('q', '')
     if q:
-        qs = qs.filter(name__icontains=q)
+        qs = qs.filter(name__icontains=q)  # icontains는 ignore문자 : 영어로 치면 대소문자 구별 안하겠다는 의미
     return render(request, 'shop/item_list.html', {
         'item_list': qs,
         'q': q,

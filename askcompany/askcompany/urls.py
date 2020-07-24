@@ -25,9 +25,8 @@ urlpatterns = [
     path('shop/', include('shop.urls'))  # 나머지는 shop.urls에서 이어서 진행한다는 의미
 ]
 
-
-if settings.DEBUG:
+if settings.DEBUG:    # debug 툴바에 있는 정적인 파일 참조
     import debug_toolbar
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
-    ]
+    ]   # 기존 urlpatterns에 추가 되는 느낌

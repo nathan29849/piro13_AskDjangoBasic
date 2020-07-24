@@ -23,26 +23,30 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0pt90puqt!*@(eb8^a1!pyp23t3@tpy+x3pcqt2qpwls*q5)ng'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # True로 계속 실행하면 메모리로 query를 계속 누적하게 됨. 쓸 때만 True로 바꾸자.
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.admin',  # 장고 기본 앱
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
-    'shop',
+
+    'debug_toolbar',   # 장고 써드파티 앱
     'django_extensions',
+
+    'blog',  # 로컬 앱
+    'shop',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # debug 값들을 수집해줌
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,8 +61,10 @@ ROOT_URLCONF = 'askcompany.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'askcompany', 'templates'),
+        ],
+        'APP_DIRS': True,  # False로 지정이 되면 앱 내의 템플릿츠들이 사용되지 않게됨.
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -122,4 +128,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = ['127.0.0.1']  # 장고 디버그 툴바를 띄우는 걸 허용할 IP들
+
