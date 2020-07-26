@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 # re_path : django.conf.urls.url()과 동일함 (url 설계에 쓰임)
 
@@ -24,6 +25,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('shop/', include('shop.urls'))  # 나머지는 shop.urls에서 이어서 진행한다는 의미
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:    # debug 툴바에 있는 정적인 파일 참조
     import debug_toolbar

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'blog',  # 로컬 앱
     'shop',
+    'common',
 ]
 
 MIDDLEWARE = [
@@ -131,13 +132,16 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIR = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "askcompany", "static"),
 ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INTERNAL_IPS = ['127.0.0.1']  # 장고 디버그 툴바를 띄우는 걸 허용할 IP들
 

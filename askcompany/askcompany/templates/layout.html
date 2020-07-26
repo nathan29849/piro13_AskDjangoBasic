@@ -1,4 +1,4 @@
-{% load static %}  {# static태그는 빌트인 태그가 아니라 꼭 load를 해줘야하 함.  #}
+{% load static fresh_static%}  {# static태그는 빌트인 태그가 아니라 꼭 load를 해줘야하 함.  #}
 <!DOCTYPE html>
 
 
@@ -11,7 +11,7 @@
 </style>
 
 {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" href="{% fresh_static 'main.css' %}" />
 {% endblock %}
 </head>
 <body>
