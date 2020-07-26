@@ -1,4 +1,4 @@
-django == 2.1.1
+django == 2.2.13
 django-extensions == 3.0.3
 django-debug-toolbar == 2.1.15
 pillow == 7.2.0
